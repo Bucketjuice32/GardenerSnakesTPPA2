@@ -1,3 +1,4 @@
+#Patient class holds data about the patients information
 class Patient:
     #__init__ method initializes the attributes
     def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, number, emergency_contact, emergency_number):
@@ -65,6 +66,7 @@ class Patient:
     def get_emergency_number(self):
         return self.__emergency_number
 
+#Procedure class holds data about procedure information
 class Procedure:
     #__init__ method initializes the attributes
     def __init__(self, procedure, date, practitioner, charge):
