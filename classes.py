@@ -1,4 +1,4 @@
-#Patient class holds data about the patients information
+#Patient class holds data about patients information
 class Patient:
     #__init__ method initializes the attributes
     def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, number, emergency_contact, emergency_number):
