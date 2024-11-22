@@ -12,7 +12,7 @@ class Patient:
         self.__emergency_contact = emergency_contact
         self.__emergency_number = emergency_number
 
-    #Mutator method stores each attribute
+    #Mutator method accepts the arguments for each attribute
     def set_first_name(self, first_name):
         self.__first_name = first_name
         
@@ -73,7 +73,7 @@ class Procedure:
         self.__practitioner = practitioner
         self.__charge = charge
 
-    #Mutator method stores each attribute
+    #Mutator method accepts the arguments for each attribute
     def set_procedure(self, procedure):
         self.__procedure = procedure
 
