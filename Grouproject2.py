@@ -107,8 +107,8 @@ def main():
     state = input('Enter the state: ')
     zipcode = input('Enter the zipcode: ')
     number = input('Enter the phone number: ')
-    emergencycontact = input('Enter the emergency contact number: ')
-    emergencycontactnumber = input('Enter the emergency contactnumber: ')
+    emergencycontact = input('Enter the emergency contact name: ')
+    emergencycontactnumber = input('Enter the emergency contact number: ')
     
     #Creates an instance
     P = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)
