@@ -99,6 +99,7 @@ class Procedure:
         return self.__charge
 
 def main():
+    #patient
     firstname = input('Enter the first name: ')
     middlename = input('Enter the middle name: ')
     lastname = input('Enter the last name: ')
@@ -109,8 +110,15 @@ def main():
     number = input('Enter the phone number: ')
     emergencycontact = input('Enter the emergency contact number: ')
     emergencycontactnumber = input('Enter the emergency contactnumber: ')
+
+
+    #procedure
+    the_procedure = input('Enter the procedure: ')
+    the_date = input('Enter the date: ')
+    the_practitioner = input('Enter the practitioner: ')
+    the_charge = input('Enter the charge: ')
     
-    #Creates an instance
+    #Creates an instance for patient
     P = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)
     P.set_first_name(firstname)
     P.set_middle_name(middlename)
@@ -122,6 +130,7 @@ def main():
     P.set_number(number)
     P.set_emergency_contact(emergencycontact)
     P.set_emergency_number(emergencycontactnumber)
+    
     print(P.get_first_name())
     print(P.get_middle_name())
     print(P.get_last_name())
@@ -132,6 +141,28 @@ def main():
     print(P.get_number())
     print(P.get_emergency_contact())
     print(P.get_emergency_number())
+
+    #creates an instance for procedure
+
+    The_Procedure = Procedure(the_procedure,the_date,the_practitioner,the_charge)
+    The_Procedure.set_procedure(the_procedure)
+    The_Procedure.set_date(the_date)
+    The_Procedure.set_practitioner(the_practitioner)
+    The_Procedure.set_charge(the_charge)
+
+    print(The_Procedure.get_procedure())
+    print(The_Procedure.get_date())
+    print(The_Procedure.get_practitioner())
+    print(The_Procedure.get_charge())
+                     
+
+if __name__ == '__main__':
+    main()
+    
+
+
+
+
 
 if __name__ == '__main__':
     main()
