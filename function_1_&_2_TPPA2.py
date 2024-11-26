@@ -14,9 +14,9 @@ def patient_info():
 
     city = input('Enter City: ')
 
-    phone = input'Enter Phone Number: ')
+    phone = input ('Enter Phone Number: ')
 
-    em_name = input'Enter name of emergency contact: ')
+    em_name = input ('Enter name of emergency contact: ')
 
     em_phone = input('Enter name of emergency contact phone number: ')
 
