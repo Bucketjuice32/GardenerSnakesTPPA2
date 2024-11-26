@@ -83,7 +83,7 @@ class Procedure:
         self.__date = date
 
     def set_practitioner(self, practitioner):
-        self.__practitioner
+        self.__practitioner = practitioner
 
     def set_charge(self, charge):
         self.__charge = charge
