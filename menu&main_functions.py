@@ -58,7 +58,7 @@ def menu_choices():
         print('1. Lookup Patient Info')
         print('2. Lookup Patient Procedure')
 
-        lookup_choice = int(input('Enter Choice: ')
+        lookup_choice = int(input('Enter Choice: '))
 
     elif choice == add_info:
 
@@ -69,7 +69,7 @@ def menu_choices():
         print('1. Add Patient Info')
         print('2. Add Patient Procedure')
 
-        add_choice = int(input('Enter Choice: ')
+        add_choice = int(input('Enter Choice: '))
             
     elif choice == change_info:
 
@@ -80,7 +80,7 @@ def menu_choices():
         print('1. Change Patient Info')
         print('2. Change Patient Procedure Info')
 
-        change_choice = int(input('Enter Choice: ')
+        change_choice = int(input('Enter Choice: '))
 
     elif choice == delete_info:
 
@@ -91,7 +91,7 @@ def menu_choices():
         print('1. Delete Patient Info')
         print('2. Delete Patient Procedure')
 
-        delete_choice = int(input('Enter Choice: ')
+        delete_choice = int(input('Enter Choice: '))
     
     while choice < lookup or choice > quit_program:
 
