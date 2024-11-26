@@ -16,27 +16,23 @@ def main():
 
     while choice != quit_program:
 
-        choice = get_menu_choice()
+        choice = menu_choices()
 
         if choice == lookup:
 
-            print('1. Lookup Patient Info')
-            print('2. Lookup Patient Procedure')
+            lookup_info()
 
         elif choice == add_info:
 
-            print('1. Add Patient Info')
-            print('2. Add Patient Procedure')
+            add_info()
             
         elif choice == change_info:
 
-            print('1. Change Patient Info')
-            print('2. Change Patient Procedure Info')
+            change_info()
 
         elif choice == delete_info:
 
-            print('1. Delete Patient Info')
-            print('2. Delete Patient Procedure')
+            delete_info()
 
 def menu_choices():
 
@@ -48,50 +44,6 @@ def menu_choices():
     print('5. Quit', '\n--------------------------')
 
     choice = int(input('Enter your choice: '))
-
-    if choice == lookup:
-
-        lookup_choice = 0
-        lookup_patient = 1
-        lookup_procedure = 2
-
-        print('1. Lookup Patient Info')
-        print('2. Lookup Patient Procedure')
-
-        lookup_choice = int(input('Enter Choice: '))
-
-    elif choice == add_info:
-
-        add_choice = 0
-        add_patient = 1
-        add_procedure = 2
-
-        print('1. Add Patient Info')
-        print('2. Add Patient Procedure')
-
-        add_choice = int(input('Enter Choice: '))
-            
-    elif choice == change_info:
-
-        change_choice = 0
-        change_patient = 1
-        change_procedure = 2
-
-        print('1. Change Patient Info')
-        print('2. Change Patient Procedure Info')
-
-        change_choice = int(input('Enter Choice: '))
-
-    elif choice == delete_info:
-
-        delete_choice = 0
-        delete_patient = 1
-        delete_procedure = 2
-
-        print('1. Delete Patient Info')
-        print('2. Delete Patient Procedure')
-
-        delete_choice = int(input('Enter Choice: '))
     
     while choice < lookup or choice > quit_program:
 
@@ -99,7 +51,49 @@ def menu_choices():
 
     return choice
 
-    
 
+def lookup_info():
+
+    lookup_choice = 0
+    lookup_patient = 1
+    lookup_procedure = 2
+
+    print('1. Lookup Patient Info')
+    print('2. Lookup Patient Procedure')
+
+    lookup_choice = int(input('Enter Choice: '))
+    
+def add_info():
+
+    add_choice = 0
+    add_patient = 1
+    add_procedure = 2
+
+    print('1. Add Patient Info')
+    print('2. Add Patient Procedure')
+
+    add_choice = int(input('Enter Choice: '))
+
+def change_info():
+
+    change_choice = 0
+    change_patient = 1
+    change_procedure = 2
+
+    print('1. Change Patient Info')
+    print('2. Change Patient Procedure Info')
+
+    change_choice = int(input('Enter Choice: '))
+
+def delete_info():
+
+    delete_choice = 0
+    delete_patient = 1
+    delete_procedure = 2
+
+    print('1. Delete Patient Info')
+    print('2. Delete Patient Procedure')
+
+    delete_choice = int(input('Enter Choice: '))
 
 main()
