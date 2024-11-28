@@ -105,6 +105,7 @@ class Procedure:
         self.__charge = charge
     #Input procedure
     def input_procedure_info(self):
+        print(end='\n')
         self.__procedure = input('Enter the procedure: ')
         self.__date = input('Enter the date: ')
         self.__practitioner = input('Enter the practitioner: ')
@@ -149,10 +150,19 @@ def main():
     The_Patient.input_patient_info()
     The_Patient.output_patient_info()
 
-    #Creating an instance for procedure
+    #Creating an instance for procedure 1,2, and 3
     The_Procedure = Procedure()
+    The_Procedure2 = Procedure()
+    The_Procedure3 = Procedure()
+    
     The_Procedure.input_procedure_info()
     The_Procedure.output_procedure_info()
+    
+    The_Procedure2.input_procedure_info()
+    The_Procedure2.output_procedure_info()
+    
+    The_Procedure3.input_procedure_info()
+    The_Procedure3.output_procedure_info()
                      
 
 if __name__ == '__main__':
