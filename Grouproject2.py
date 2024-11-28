@@ -23,7 +23,7 @@ class Patient:
         self.__state = input('Enter the state: ')
         self.__zip_code = input('Enter the zipcode: ')
         self.__number = input('Enter the phone number: ')
-        self.__emergency_contact = input('Enter the emergency contact number: ')
+        self.__emergency_contact = input('Enter the emergency contact: ')
         self.__emergency_number = input('Enter the emergency contact number: ')
 
     #Output procedure
