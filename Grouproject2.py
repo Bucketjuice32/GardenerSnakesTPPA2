@@ -119,17 +119,17 @@ def main():
     the_charge = input('Enter the charge: ')
     
     #Creates an instance for patient
-    P = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)   
-    print(P.get_first_name())
-    print(P.get_middle_name())
-    print(P.get_last_name())
-    print(P.get_address())
-    print(P.get_city())
-    print(P.get_state())
-    print(P.get_zip_code())
-    print(P.get_number())
-    print(P.get_emergency_contact())
-    print(P.get_emergency_number())
+    The_Patient = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)   
+    print(The_Patient.get_first_name())
+    print(The_Patient.get_middle_name())
+    print(The_Patient.get_last_name())
+    print(The_Patient.get_address())
+    print(The_Patient.get_city())
+    print(The_Patient.get_state())
+    print(The_Patient.get_zip_code())
+    print(The_Patient.get_number())
+    print(The_Patient.get_emergency_contact())
+    print(The_Patient.get_emergency_number())
 
     #creates an instance for procedure
     The_Procedure = Procedure(the_procedure,the_date,the_practitioner,the_charge)
