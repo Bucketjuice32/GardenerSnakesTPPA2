@@ -1,7 +1,7 @@
 #Patient class holds data about patients information
 class Patient:
     #__init__ method initializes the attributes
-    def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, number, emergency_contact, emergency_number):
+    def __init__(self, first_name=None, middle_name=None, last_name=None, address=None, city=None, state=None, zip_code=None, number=None, emergency_contact=None, emergency_number=None):
         self.__first_name = first_name
         self.__middle_name = middle_name
         self.__last_name = last_name
@@ -12,6 +12,35 @@ class Patient:
         self.__number = number
         self.__emergency_contact = emergency_contact
         self.__emergency_number = emergency_number
+        
+    #Input procedure       
+    def input_patient_info(self) :
+        self.__first_name = input('Enter the first name: ')
+        self.__middle_name = input('Enter the middle name: ')
+        self.__last_name = input('Enter the last name: ')
+        self.__address = input('Enter the adress: ')
+        self.__city = input('Enter the city: ')
+        self.__state = input('Enter the state: ')
+        self.__zip_code = input('Enter the zipcode: ')
+        self.__number = input('Enter the phone number: ')
+        self.__emergency_contact = input('Enter the emergency contact number: ')
+        self.__emergency_number = input('Enter the emergency contact number: ')
+
+    #Output procedure
+    def output_patient_info(self):
+        print(end='\n')
+        print(f'First Name: {self.get_first_name()}')
+        print(f'Middle Name: {self.get_middle_name()}')
+        print(f'Last Name: {self.get_last_name()}')
+        print(f'Address" {self.get_address()}')
+        print(f'City: {self.get_city()}')
+        print(f'State: {self.get_state()}')
+        print(f'Zip Code: {self.get_zip_code()}')
+        print(f'Phone Number: {self.get_number()}')
+        print(f'Emergency Contact: {self.get_emergency_contact()}')
+        print(f'Emergency Contact Number: {self.get_emergency_number()}')
+        print(end='\n')
+             
 
     #Mutator method accepts the arguments for each attribute
     def set_first_name(self, first_name):
@@ -69,11 +98,26 @@ class Patient:
 #Procedure class holds data about procedure information
 class Procedure:
     #__init__ method initializes the attributes
-    def __init__(self, procedure, date, practitioner, charge):
+    def __init__(self, procedure=None, date=None, practitioner=None, charge=None):
         self.__procedure = procedure
         self.__date = date
         self.__practitioner = practitioner
         self.__charge = charge
+    #Input procedure
+    def input_procedure_info(self):
+        self.__procedure = input('Enter the procedure: ')
+        self.__date = input('Enter the date: ')
+        self.__practitioner = input('Enter the practitioner: ')
+        self.__charge = input('Enter the charge: ')
+
+    #Output procedure
+    def output_procedure_info(self):
+        print(end='\n')
+        print(f'Procedure: {self.get_procedure()}')
+        print(f'Date: {self.get_date()}')
+        print(f'Practitioner: {self.get_practitioner()}')
+        print(f'Charge: {self.get_charge()}')
+                    
 
     #Mutator method accepts the arguments for each attribute
     def set_procedure(self, procedure):
@@ -99,43 +143,16 @@ class Procedure:
         return self.__charge
 
 def main():
-    #patient
-    firstname = input('Enter the first name: ')
-    middlename = input('Enter the middle name: ')
-    lastname = input('Enter the last name: ')
-    address = input('Enter the adress: ')
-    city = input('Enter the city: ')
-    state = input('Enter the state: ')
-    zipcode = input('Enter the zipcode: ')
-    number = input('Enter the phone number: ')
-    emergencycontact = input('Enter the emergency contact number: ')
-    emergencycontactnumber = input('Enter the emergency contactnumber: ')
-    
-    #Creates an instance for patient
-    The_Patient = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)   
-    print(The_Patient.get_first_name())
-    print(The_Patient.get_middle_name())
-    print(The_Patient.get_last_name())
-    print(The_Patient.get_address())
-    print(The_Patient.get_city())
-    print(The_Patient.get_state())
-    print(The_Patient.get_zip_code())
-    print(The_Patient.get_number())
-    print(The_Patient.get_emergency_contact())
-    print(The_Patient.get_emergency_number())
 
-    #procedure
-    the_procedure = input('Enter the procedure: ')
-    the_date = input('Enter the date: ')
-    the_practitioner = input('Enter the practitioner: ')
-    the_charge = input('Enter the charge: ')
+    #Creating an instance for patient
+    The_Patient = Patient()
+    The_Patient.input_patient_info()
+    The_Patient.output_patient_info()
 
-    #creates an instance for procedure
-    The_Procedure = Procedure(the_procedure,the_date,the_practitioner,the_charge)
-    print(The_Procedure.get_procedure())
-    print(The_Procedure.get_date())
-    print(The_Procedure.get_practitioner())
-    print(The_Procedure.get_charge())
+    #Creating an instance for procedure
+    The_Procedure = Procedure()
+    The_Procedure.input_procedure_info()
+    The_Procedure.output_procedure_info()
                      
 
 if __name__ == '__main__':
