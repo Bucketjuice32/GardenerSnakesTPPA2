@@ -110,13 +110,6 @@ def main():
     number = input('Enter the phone number: ')
     emergencycontact = input('Enter the emergency contact number: ')
     emergencycontactnumber = input('Enter the emergency contactnumber: ')
-
-
-    #procedure
-    the_procedure = input('Enter the procedure: ')
-    the_date = input('Enter the date: ')
-    the_practitioner = input('Enter the practitioner: ')
-    the_charge = input('Enter the charge: ')
     
     #Creates an instance for patient
     The_Patient = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)   
@@ -130,6 +123,12 @@ def main():
     print(The_Patient.get_number())
     print(The_Patient.get_emergency_contact())
     print(The_Patient.get_emergency_number())
+
+    #procedure
+    the_procedure = input('Enter the procedure: ')
+    the_date = input('Enter the date: ')
+    the_practitioner = input('Enter the practitioner: ')
+    the_charge = input('Enter the charge: ')
 
     #creates an instance for procedure
     The_Procedure = Procedure(the_procedure,the_date,the_practitioner,the_charge)
