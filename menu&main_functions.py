@@ -1,16 +1,12 @@
-
-
-# Global Constants
-lookup = 1
-add_info = 2
-change_info = 3
-delete_info = 4
-quit_program = 5
-
 # Defining main Function
 def main():
+    lookup = 1
+    add_choice = 2
+    change_choice = 3
+    delete_choice = 4
+    quit_program = 5
 
-    # Constant variable=
+    # Constant variable
     choice = 0
 
     # Loop to end program depending on choice made
@@ -21,17 +17,19 @@ def main():
         if choice == lookup:
             lookup_info()
         # If choice is equal to 2 it calls the add_info function
-        elif choice == add_info:
-            add_info()
+        elif choice == add_choice:
+            add_info_()
         # If choice is equal to 3 it calls the change_info function
-        elif choice == change_info:
+        elif choice == change_choice:
             change_info()
         # If choice is equal to 4 it calls the delete_info function
-        elif choice == delete_info:
+        elif choice == delete_choice:
             delete_info()
             
 # Defining menu function
 def menu_choices():
+    lookup = 1
+    quit_program = 5
 
     # Display menu choices
     print('Menu', '\n--------------------------')
@@ -63,12 +61,12 @@ def lookup_info():
     lookup_choice = int(input('Enter Choice: '))
 
     if lookup_choice == lookup_patient:
-
+        pass
     elif lookup_choice == lookup_procedure:
-        
+        pass    
 
 # Defining add info functio n 
-def add_info():
+def add_info_():
 
     add_choice = 0
     add_patient = 1
@@ -80,9 +78,9 @@ def add_info():
     add_choice = int(input('Enter Choice: '))
 
     if add_choice == add_patient:
-
+        pass
     elif add_choice == add_procedure:
-
+        pass
 
 # Defining change info function
 def change_info():
@@ -97,8 +95,9 @@ def change_info():
     change_choice = int(input('Enter Choice: '))
 
     if change_choice == change_patient:
-
+        pass
     elif change_choice == change_patient:
+        pass
     
 # Defining delete info function
 def delete_info():
@@ -113,10 +112,9 @@ def delete_info():
     delete_choice = int(input('Enter Choice: '))
 
     if delete_choice == delete_patient:
-
-
+        pass
     elif delete_choice == delete_procedure:
+        pass
 
-
-# Calling the main function
-main()
+if __name__ == '__main__':
+    main()
