@@ -18,7 +18,7 @@ def main():
             lookup_info()
         # If choice is equal to 2 it calls the add_info function
         elif choice == add_choice:
-            add_info_()
+            add_info()
         # If choice is equal to 3 it calls the change_info function
         elif choice == change_choice:
             change_info()
@@ -66,7 +66,7 @@ def lookup_info():
         pass    
 
 # Defining add info functio n 
-def add_info_():
+def add_info():
 
     add_choice = 0
     add_patient = 1
