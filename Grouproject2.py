@@ -151,12 +151,12 @@ def main():
     The_Patient.output_patient_info()
 
     #Creating an instance for procedure 1,2, and 3
-    The_Procedure = Procedure()
+    The_Procedure1 = Procedure()
     The_Procedure2 = Procedure()
     The_Procedure3 = Procedure()
     
-    The_Procedure.input_procedure_info()
-    The_Procedure.output_procedure_info()
+    The_Procedure1.input_procedure_info()
+    The_Procedure1.output_procedure_info()
     
     The_Procedure2.input_procedure_info()
     The_Procedure2.output_procedure_info()
