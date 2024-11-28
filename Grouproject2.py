@@ -119,18 +119,7 @@ def main():
     the_charge = input('Enter the charge: ')
     
     #Creates an instance for patient
-    P = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)
-    P.set_first_name(firstname)
-    P.set_middle_name(middlename)
-    P.set_last_name(lastname)
-    P.set_address(address)
-    P.set_city(city)
-    P.set_state(state)
-    P.set_zip_code(zipcode)
-    P.set_number(number)
-    P.set_emergency_contact(emergencycontact)
-    P.set_emergency_number(emergencycontactnumber)
-    
+    P = Patient(firstname, middlename,lastname, address, city, state, zipcode, number, emergencycontact, emergencycontactnumber)   
     print(P.get_first_name())
     print(P.get_middle_name())
     print(P.get_last_name())
@@ -143,13 +132,7 @@ def main():
     print(P.get_emergency_number())
 
     #creates an instance for procedure
-
     The_Procedure = Procedure(the_procedure,the_date,the_practitioner,the_charge)
-    The_Procedure.set_procedure(the_procedure)
-    The_Procedure.set_date(the_date)
-    The_Procedure.set_practitioner(the_practitioner)
-    The_Procedure.set_charge(the_charge)
-
     print(The_Procedure.get_procedure())
     print(The_Procedure.get_date())
     print(The_Procedure.get_practitioner())
