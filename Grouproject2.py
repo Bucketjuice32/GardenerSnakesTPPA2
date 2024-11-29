@@ -18,7 +18,7 @@ class Patient:
         self.__first_name = input('Enter the first name: ')
         self.__middle_name = input('Enter the middle name: ')
         self.__last_name = input('Enter the last name: ')
-        self.__address = input('Enter the adress: ')
+        self.__address = input('Enter the address: ')
         self.__city = input('Enter the city: ')
         self.__state = input('Enter the state: ')
         self.__zip_code = input('Enter the zipcode: ')
