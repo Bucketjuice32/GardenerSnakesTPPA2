@@ -149,7 +149,7 @@ def main():
     The_Patient.input_patient_info()
     The_Patient.output_patient_info()
 
-    #Creating an instance for procedure 1,2, and 3
+    #Creating an instance for three procedures
     The_Procedure1 = Procedure()
     The_Procedure2 = Procedure()
     The_Procedure3 = Procedure()
