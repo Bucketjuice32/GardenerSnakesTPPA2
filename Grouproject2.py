@@ -39,7 +39,6 @@ class Patient:
         print(f'Phone Number: {self.get_number()}')
         print(f'Emergency Contact: {self.get_emergency_contact()}')
         print(f'Emergency Contact Number: {self.get_emergency_number()}')
-        print(end='\n')
              
 
     #Mutator method accepts the arguments for each attribute
