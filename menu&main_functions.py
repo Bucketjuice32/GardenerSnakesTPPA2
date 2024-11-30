@@ -114,8 +114,8 @@ def delete_info():
         #Get a name to look up.
         name = input('Enter the patient\'s first and last name: ')
         #If the name is found, delete the entry.
-        if name in contacts:
-            del contacts[name]
+        if name in patient:
+            del patient[name]
             print('Patient information is deleted.')
         else:
             print('The name is not found.')
