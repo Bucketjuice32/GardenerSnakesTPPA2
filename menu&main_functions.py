@@ -101,7 +101,6 @@ def change_info():
     
 # Defining delete info function
 def delete_info():
-
     delete_choice = 0
     delete_patient = 1
     delete_procedure = 2
@@ -112,9 +111,28 @@ def delete_info():
     delete_choice = int(input('Enter Choice: '))
 
     if delete_choice == delete_patient:
-        pass
+        #Get a name to look up.
+        name = input('Enter the patient\'s first and last name: ')
+        #If the name is found, delete the entry.
+        if name in contacts:
+            del contacts[name]
+            print('Patient information is deleted.')
+        else:
+            print('The name is not found.')
+        
     elif delete_choice == delete_procedure:
-        pass
+        #Get name to look up procedure
+        name = input('Enter the first and last name of the patient: ')
+        if name in procedures:
+            print(f'The Procedures of {name}: {procedures[name]}')
+        #Get procedure
+        delete_procedure = input('Enter the procedure to delete: ')
+        #If the name is found, delete the entry.
+        if delete_procedure in procedures[name]:
+            del procedures[name]
+            print('Procedure is deleted.')
+        else:
+            print('The procedure is not found.')
 
 if __name__ == '__main__':
     main()
