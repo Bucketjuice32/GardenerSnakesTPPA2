@@ -61,11 +61,19 @@ def lookup_info():
     lookup_choice = int(input('Enter Choice: '))
 
     if lookup_choice == lookup_patient:
-        pass
+        name = input("Enter patient's name: ")
+        if name in patients:
+            print(f"Patient Info for {name}: {patients[name]}")
+        else:
+            print("Patient not found.")
     elif lookup_choice == lookup_procedure:
-        pass    
+        name = input("Enter patient's name to look up procedures: ")
+        if name in procedures:
+            print(f"Procedures for {name}: {procedures[name]}")
+        else:
+            print("No procedures found for this patient.")
 
-# Defining add info functio n 
+# Defining add info function 
 def add_info():
 
     add_choice = 0
@@ -78,9 +86,26 @@ def add_info():
     add_choice = int(input('Enter Choice: '))
 
     if add_choice == add_patient:
-        pass
+        name = input("Enter patient's full name: ")
+        age = int(input("Enter patient's age: "))
+        gender = input("Enter patient's gender: ")
+        condition = input("Enter patient's condition: ")
+
+        # Add to patients dictionary
+        patients[name] = {"age": age, "gender": gender, "condition": condition}
+        print(f"Patient info for {name} added successfully.")
+    
     elif add_choice == add_procedure:
-        pass
+        name = input("Enter patient's name to add a procedure: ")
+        if name in patients:
+            procedure = input("Enter the procedure to add: ")
+            if name in procedures:
+                procedures[name].append(procedure)
+            else:
+                procedures[name] = [procedure]
+            print(f"Procedure '{procedure}' added for {name}.")
+        else:
+            print(f"Patient {name} not found.")
 
 # Defining change info function
 def change_info():
