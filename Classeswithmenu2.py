@@ -163,13 +163,15 @@ def main():
     # Loop to end program depending on choice made
     while choice != quit_program:
         choice = menu_choices()
+        patient_list = {}
 
         # If choice is equal to 1 it calls the lookup function
         if choice == lookup:
             lookup_info()
         # If choice is equal to 2 it calls the add_info function
         elif choice == add_choice:
-            add_info()
+             dictornary = add_info()
+             print (dictornary)
         # If choice is equal to 3 it calls the change_info function
         elif choice == change_choice:
             change_info()
@@ -223,6 +225,7 @@ def add_info():
         print(end='\n')
         print(f"Patient info for {Dictionary['First Name:']} added successfully.")
         print(end='\n')
+        return Dictionary
         
     if add_choice == add_procedure:
         #creates an instance for patient
