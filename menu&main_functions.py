@@ -70,9 +70,8 @@ def menu_choices():
 
     return choice
 
-# Defining lookup function
+# Defining lookup info function
 def lookup_info():
-
     lookup_choice = 0
     lookup_patient = 1
     lookup_procedure = 2
@@ -83,17 +82,34 @@ def lookup_info():
     lookup_choice = int(input('Enter Choice: '))
 
     if lookup_choice == lookup_patient:
-        name = input("Enter patient's name: ")
-        if name in patients:
-            print(f"Patient Info for {name}: {patients[name]}")
-        else:
-            print("Patient not found.")
+        try:
+            patient_id = int(input("Enter Patient ID: "))
+            patient = patient_manager.get_patient(patient_id)  # Retrieve patient by ID
+            if patient:
+                print(f"\nPatient Info for ID {patient_id}:")
+                print(patient.get_patient_info())  # Assuming this method provides patient details
+            else:
+                print("Patient ID not found.")
+        except ValueError:
+            print("Invalid ID. Please enter a valid integer.")
     elif lookup_choice == lookup_procedure:
-        name = input("Enter patient's name to look up procedures: ")
-        if name in procedures:
-            print(f"Procedures for {name}: {procedures[name]}")
-        else:
-            print("No procedures found for this patient.")
+        try:
+            patient_id = int(input("Enter Patient ID to look up procedures: "))
+            patient = patient_manager.get_patient(patient_id)  # Retrieve patient by ID
+            if patient:
+                if patient.procedures:  # Assuming `procedures` is a list in the Patient object
+                    print(f"\nProcedures for ID {patient_id}:")
+                    for procedure in patient.procedures:
+                        print(procedure.get_procedure_info())  # Assuming a method for procedure details
+                else:
+                    print("No procedures found for this patient.")
+            else:
+                print("Patient ID not found.")
+        except ValueError:
+            print("Invalid ID. Please enter a valid integer.")
+
+    else:
+        print("Invalid choice. Please select a valid option.")
 
 # Defining add info function 
 def add_info():
