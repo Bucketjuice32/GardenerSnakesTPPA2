@@ -1,3 +1,7 @@
+import patient_class
+
+patient_manager = patient_class.PatientManager()
+
 # Defining main Function
 def main():
     lookup = 1
@@ -86,14 +90,7 @@ def add_info():
     add_choice = int(input('Enter Choice: '))
 
     if add_choice == add_patient:
-        name = input("Enter patient's full name: ")
-        age = int(input("Enter patient's age: "))
-        gender = input("Enter patient's gender: ")
-        condition = input("Enter patient's condition: ")
-
-        # Add to patients dictionary
-        patients[name] = {"age": age, "gender": gender, "condition": condition}
-        print(f"Patient info for {name} added successfully.")
+        patient1 = patient_class.Patient.input_patient_info
     
     elif add_choice == add_procedure:
         name = input("Enter patient's name to add a procedure: ")

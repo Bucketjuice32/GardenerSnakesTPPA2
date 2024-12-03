@@ -12,9 +12,38 @@ class Patient:
         self.__number = number
         self.__emergency_contact = emergency_contact
         self.__emergency_number = emergency_number
+        self.__procedures = []
+        self.__next_procedure_id = 1
         
-    #Input procedure       
-    def input_patient_info(self) :
+
+    def add_procedure(self, procedure):
+        # Adds procedure to this patient's record
+        if isinstance(procedure, Procedure):
+            procedure.set_id(self.__next_procedure_id)
+            self.__procedures.append(procedure)
+            self.__next_procedure_id += 1
+            return True
+        return False
+
+    def get_procedures(self):
+        # Returns list of all procedures
+        return self.__procedures
+
+    def remove_procedure(self, procedure_id):
+        # Remove a procedure by ID
+        for procedure in self.__procedures:
+            if procedure.get_id() == procedure_id:
+                self.__procedures.remove(procedure)
+                print (f"Procedure Removed Successfully!")
+                return True
+        return False
+
+    def get_full_name(self):
+        return f"{self.__first_name} {self.__middle_name} {self.__last_name}".strip()
+
+    #Input Patient Info      
+    def input_patient_info(self):
+
         self.__first_name = input('Enter the first name: ')
         self.__middle_name = input('Enter the middle name: ')
         self.__last_name = input('Enter the last name: ')
@@ -25,6 +54,19 @@ class Patient:
         self.__number = input('Enter the phone number: ')
         self.__emergency_contact = input('Enter the emergency contact: ')
         self.__emergency_number = input('Enter the emergency contact number: ')
+        
+        while True:
+            add_procedure = input("\nWould you like to add a procedure? (yes/no): ").lower()
+            if add_procedure == 'yes':
+                new_procedure = Procedure()
+                new_procedure.input_procedure_info()
+                self.add_procedure(new_procedure)
+                continue_adding = input("Add another procedure? (yes/no): ").lower()
+                if continue_adding != 'yes':
+                    break
+            else:
+                break
+        return self
 
     #Output procedure
     def output_patient_info(self):
@@ -39,7 +81,12 @@ class Patient:
         print(f'Phone Number: {self.get_number()}')
         print(f'Emergency Contact: {self.get_emergency_contact()}')
         print(f'Emergency Contact Number: {self.get_emergency_number()}')
-             
+        
+        if self.__procedures:
+            print("\nProcedures:")
+            for procedure in self.__procedures:
+                print ("\n============")
+                procedure.output_procedure_info()
 
     #Mutator method accepts the arguments for each attribute
     def set_first_name(self, first_name):
@@ -72,6 +119,7 @@ class Patient:
     def set_emergency_number(self, emergency_number):
         self.__emergency_number = emergency_number
 
+
     #Accessor method returns the attributes
     def get_first_name(self):
         return self.__first_name
@@ -97,50 +145,91 @@ class Patient:
 #Procedure class holds data about procedure information
 class Procedure:
     #__init__ method initializes the attributes
-    def __init__(self, procedure=None, date=None, practitioner=None, charge=None):
-        self.__procedure = procedure
+    def __init__(self, procedure_name=None, date=None, practitioner=None, charge=None):
+        self.__id = None
+        self.__procedure_name = procedure_name
         self.__date = date
         self.__practitioner = practitioner
         self.__charge = charge
+
     #Input procedure
     def input_procedure_info(self):
         print(end='\n')
-        self.__procedure = input('Enter the procedure: ')
+        self.__procedure_name = input('Enter the procedure: ')
         self.__date = input('Enter the date: ')
         self.__practitioner = input('Enter the practitioner: ')
         self.__charge = input('Enter the charge: ')
 
+        return self
+
     #Output procedure
     def output_procedure_info(self):
         print(end='\n')
-        print(f'Procedure: {self.get_procedure()}')
+        print(f"Procedure ID: {self.get_id()}")
+        print(f'Procedure: {self.get_procedure_name()}')
         print(f'Date: {self.get_date()}')
         print(f'Practitioner: {self.get_practitioner()}')
         print(f'Charge: {self.get_charge()}')
                     
 
     #Mutator method accepts the arguments for each attribute
-    def set_procedure(self, procedure):
-        self.__procedure = procedure
+    def set_procedure_name(self, procedure_name):
+        self.__procedure_name = procedure_name
 
     def set_date(self, date):
         self.__date = date
 
     def set_practitioner(self, practitioner):
-        self.__practitioner
+        self.__practitioner = practitioner
 
     def set_charge(self, charge):
         self.__charge = charge
+    
+    def set_id(self, id):
+        self.__id = id
 
     #Accessor method returns the attributes
-    def get_procedure(self):
-        return self.__procedure
+    def get_procedure_name(self):
+        return self.__procedure_name
     def get_date(self):
         return self.__date
     def get_practitioner(self):
         return self.__practitioner
     def get_charge(self):
         return self.__charge
+    def get_id(self):
+        return self.__id
+
+# Manages the data of Patient Class
+class PatientManager:
+    def __init__(self):
+        self.__patients = {}
+        self.__next_id = 1
+    
+    def add_patient(self, patient):
+        if isinstance(patient, Patient):
+            patient_id = self.__next_id
+            self.__patients[patient_id] = patient
+            self.__next_id += 1
+            return patient_id
+        return None
+    def get_patient(self, patient_id):
+        return self.__patients.get(patient_id)
+    
+    def find_patient_by_name(self, full_name):
+        for patient_id, patient in self.__patients.items():
+            if patient.get_full_name().lower() == full_name.lower():
+                return patient_id, patient
+        return None, None
+    
+    def delete_patient (self, patient_id):
+        if patient_id in self.__patients:
+            del self.__patients[patient_id]
+            return True
+        return False
+    def get_all_patients(self):
+        return self.__patients.items()
+
 
 def main():
 
