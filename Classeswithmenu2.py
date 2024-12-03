@@ -73,9 +73,6 @@ class Patient:
     def set_emergency_number(self, emergency_number):
         self.__emergency_number = emergency_number
 
-    def set_procedure(self, procedure):
-        self.__procedures = 
-
     #Accessor method returns the attributes
     def get_first_name(self):
         return self.__first_name
@@ -128,14 +125,8 @@ class Procedure:
         (f'Date: ', f'{self.get_date()}'),
         (f'Practitioner: ', f'{self.get_practitioner()}'),
         (f'Charge: ', f'{self.get_charge()}')]
-    
-    def adding_procedure(self, procedure):
-        
-
 
     #Mutator method accepts the arguments for each attribute
-    def set_procedure(self, procedure):
-        self.__procedure = procedure
 
     def set_date(self, date):
         self.__date = date
