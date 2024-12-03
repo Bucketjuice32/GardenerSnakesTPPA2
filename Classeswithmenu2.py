@@ -12,6 +12,7 @@ class Patient:
         self.__number = number
         self.__emergency_contact = emergency_contact
         self.__emergency_number = emergency_number
+        self.__procedures = []
         
     #Input procedure       
     def input_patient_info() :
@@ -29,16 +30,17 @@ class Patient:
 
     #Output procedure
     def output_patient_info(self):
-        return((f'First Name:', f'{self.get_first_name()}'), 
-        (f'Middle Name:', f'{self.get_middle_name()}'),
-        (f'Last Name: ', f'{self.get_last_name()}'),
-        (f'Address: ', f'{self.get_address()}'),
-        (f'City: ',f'{self.get_city()}'),
-        (f'State: ',f'{self.get_state()}'),
-        (f'Zip Code:', f'{self.get_zip_code()}'),
-        (f'Phone Number:', f'{self.get_number()}'),
-        (f'Emergency Contact: ',f'{self.get_emergency_contact()}'),
-        (f'Emergency Contact Number: ',f'{self.get_emergency_number()}'))           
+        return((f'First Name: {self.get_first_name()}'), 
+        (f'Middle Name: {self.get_middle_name()}'),
+        (f'Last Name: {self.get_last_name()}'),
+        (f'Address: {self.get_address()}'),
+        (f'City: {self.get_city()}'),
+        (f'State: {self.get_state()}'),
+        (f'Zip Code: {self.get_zip_code()}'),
+        (f'Phone Number: {self.get_number()}'),
+        (f'Emergency Contact: {self.get_emergency_contact()}'),
+        (f'Emergency Contact Number: {self.get_emergency_number()}'),
+        (f'Procedures: {self.get_procedures}'))           
 
     #Mutator method accepts the arguments for each attribute
     def set_first_name(self, first_name):
@@ -71,6 +73,9 @@ class Patient:
     def set_emergency_number(self, emergency_number):
         self.__emergency_number = emergency_number
 
+    def set_procedure(self, procedure):
+        self.__procedures = 
+
     #Accessor method returns the attributes
     def get_first_name(self):
         return self.__first_name
@@ -92,6 +97,8 @@ class Patient:
         return self.__emergency_contact
     def get_emergency_number(self):
         return self.__emergency_number
+    def get_procedures(self):
+        return self.__procedures.items()
 
 #Procedure class holds data about procedure information
 class Procedure:
@@ -102,9 +109,10 @@ class Procedure:
         self.__date = date
         self.__practitioner = practitioner
         self.__charge = charge
+        self.__id = 1
 
-    #Input procedure
-    def input_procedure_info():
+    #Creates procedure instance
+    def input_procedure_info(self):
         return Procedure(
         input('Enter the first name: '),
         input('Enter the procedure: '),
@@ -114,12 +122,16 @@ class Procedure:
 
     #Output procedure
     def output_procedure_info(self):
-        return((f'First Name:', f'{self.get_first_name()}'),
+        return [(f'Procedure ID:', f'{self.get_id()}'),
+        (f'First Name:', f'{self.get_first_name()}'),
         (f'Procedure: ',f'{self.get_procedure()}'),
         (f'Date: ', f'{self.get_date()}'),
         (f'Practitioner: ', f'{self.get_practitioner()}'),
-        (f'Charge: ', f'{self.get_charge()}'))
-                    
+        (f'Charge: ', f'{self.get_charge()}')]
+    
+    def adding_procedure(self, procedure):
+        
+
 
     #Mutator method accepts the arguments for each attribute
     def set_procedure(self, procedure):
@@ -148,7 +160,8 @@ class Procedure:
         return self.__charge
     def get_first_name(self):
         return self.__first_name
-
+    def get_id(self):
+        return self.__id
 
 def main():
     lookup = 1
@@ -156,22 +169,22 @@ def main():
     change_choice = 3
     delete_choice = 4
     quit_program = 5
-
+    patient_list = {}
     # Constant variable
     choice = 0
 
     # Loop to end program depending on choice made
     while choice != quit_program:
         choice = menu_choices()
-        patient_list = {}
 
         # If choice is equal to 1 it calls the lookup function
         if choice == lookup:
             lookup_info()
         # If choice is equal to 2 it calls the add_info function
         elif choice == add_choice:
-             dictornary = add_info()
-             print (dictornary)
+             dictornary, ID = add_info()
+             patient_list[ID] = dictornary
+             print(patient_list)
         # If choice is equal to 3 it calls the change_info function
         elif choice == change_choice:
             change_info()
@@ -208,6 +221,7 @@ def add_info():
     add_choice = 0
     add_patient = 1
     add_procedure = 2
+    patient_ID = 1
 
     print('1. Add Patient Info')
     print('2. Add Patient Procedure')
@@ -220,12 +234,10 @@ def add_info():
         #outputs the input for the pateint into a tuple
         Output_Patient = Input_Patient.output_patient_info()
         #Stores tuple into a dictionary
-        Dictionary = dict((x,y) for x, y in Output_Patient)
-        print(Dictionary)
         print(end='\n')
-        print(f"Patient info for {Dictionary['First Name:']} added successfully.")
+        print(f"Patient info added successfully with ID: {patient_ID}.")
         print(end='\n')
-        return Dictionary
+        return Output_Patient, patient_ID
         
     if add_choice == add_procedure:
         #creates an instance for patient
@@ -237,8 +249,7 @@ def add_info():
         print(end='\n')
         print(f"Procedure info for {Dictionary['First Name:']} added successfully.")
         print(end='\n')
-               
-
+    patient_ID += 1
 
 if __name__ == '__main__':
     main()
