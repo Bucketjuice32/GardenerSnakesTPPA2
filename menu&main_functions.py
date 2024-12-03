@@ -29,7 +29,25 @@ def main():
         # If choice is equal to 4 it calls the delete_info function
         elif choice == delete_choice:
             delete_info()
-            
+
+# Displays patient list and return if patients exist
+def display_patient_list():
+    print ("\nCurrent Patients:")
+    print ("===================")
+    patients_exist = False
+    try:
+        for patient_id, patient in patient_manager.get_all_patients():
+            patients_exist = True
+            print(f"ID: {patient_id}, Name: {patient.get_full_name()}")
+    except Exception as e:
+        print (f"Error displaying patients: {e}")
+
+    print ("===================")
+
+    if not patients_exist:
+        print ("No Patients in the System.")
+    return patients_exist
+
 # Defining menu function
 def menu_choices():
     lookup = 1
@@ -90,19 +108,28 @@ def add_info():
     add_choice = int(input('Enter Choice: '))
 
     if add_choice == add_patient:
-        patient1 = patient_class.Patient.input_patient_info
+        new_patient = patient_class.Patient()
+        new_patient.input_patient_info()
+        patient_id = patient_manager.add_patient(new_patient)
+        print (f"\nPatient added successfully! ID: {patient_id}")
     
     elif add_choice == add_procedure:
-        name = input("Enter patient's name to add a procedure: ")
-        if name in patients:
-            procedure = input("Enter the procedure to add: ")
-            if name in procedures:
-                procedures[name].append(procedure)
-            else:
-                procedures[name] = [procedure]
-            print(f"Procedure '{procedure}' added for {name}.")
+        if display_patient_list():
+            try:
+                user_id = int(input("\nEnter Patient ID:"))
+                patient = patient_manager.get_patient(user_id)
+
+                if patient:
+                    new_procedure = patient_class.Procedure()
+                    new_procedure.input_procedure_info()
+                    if patient.add_procedure(new_procedure):
+                        print ("procedure added successfully!")
+                else:
+                    print("Patient ID not found.")
+            except ValueError:
+                print("Please enter a valid integer ID.")
         else:
-            print(f"Patient {name} not found.")
+            print ("Please add a patient first.")
 
 # Defining change info function
 def change_info():
