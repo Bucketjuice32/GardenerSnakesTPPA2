@@ -216,11 +216,11 @@ class PatientManager:
     def get_patient(self, patient_id):
         return self.__patients.get(patient_id)
     
-    def find_patient_by_name(self, full_name):
-        for patient_id, patient in self.__patients.items():
-            if patient.get_full_name().lower() == full_name.lower():
-                return patient_id, patient
-        return None, None
+    # def find_patient_by_name(self, full_name):
+    #     for patient_id, patient in self.__patients.items():
+    #         if patient.get_full_name().lower() == full_name.lower():
+    #             return patient_id, patient
+    #     return None, None
     
     def delete_patient (self, patient_id):
         if patient_id in self.__patients:

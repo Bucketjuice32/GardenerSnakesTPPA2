@@ -118,7 +118,6 @@ def add_info():
             try:
                 user_id = int(input("\nEnter Patient ID:"))
                 patient = patient_manager.get_patient(user_id)
-
                 if patient:
                     new_procedure = patient_class.Procedure()
                     new_procedure.input_procedure_info()
