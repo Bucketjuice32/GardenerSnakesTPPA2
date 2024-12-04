@@ -175,7 +175,7 @@ def main():
             change_info()
         # If choice is equal to 4 it calls the delete_info function
         elif choice == delete_choice:
-            delete_info()
+            delete_info(patient_list)
 
 # Displays list of Patient by ID & First Name
 def patient_display(patient_dict):
@@ -188,6 +188,22 @@ def patient_display(patient_dict):
         print(f"ID: {patient_id} - First Name: {patient_info['First Name:']}")
     print("-----------------")
 
+def display_procedures(patient_list, patient_id):
+    if patient_id in patient_list:
+        procedures = patient_list[patient_id]["Procedures:"]
+        if procedures:
+            print(f"\nProcedures for Patient ID {patient_id}:")
+            print("--------------------------------")
+            for i, procedure in enumerate(procedures, 1):
+                print(f"ID: {i} - Procedure: {procedure['Procedure: ']}")
+            print("--------------------------------")
+        else:
+            print(f"\nPatient ID {patient_id} has no procedures recorded.")
+            return False
+    else:
+        print("\nPatient ID not found.")
+        return False
+
 # Defining menu function
 def menu_choices():
     lookup = 1
@@ -197,6 +213,7 @@ def menu_choices():
     print('Menu', '\n--------------------------')
     print('1. Lookup Info')
     print('2. Add Info')
+    print('4. Delete Info')
     print('5. Quit Program')
  
     
@@ -285,6 +302,54 @@ def add_info(patient_list, patient_id):
                     break     
     return patient_id
 
+def delete_info(patient_list):
+
+    delete_choice = 0
+    delete_patient = 1
+    delete_procedure = 2
+
+    print('1. Delete Patient Info')
+    print('2. Delete Patient Procedure')
+
+    delete_choice = int(input('Enter Choice: '))
+
+    if delete_choice == delete_patient:
+        while True:
+            if patient_display(patient_list) == False:
+                    print (f"Add a patient.")
+                    break
+            selection = int(input("Which patient would you like to DELETE? Select ID: "))
+            name = patient_list[selection]["First Name:"]
+            
+            confirm = input(f"Are you sure you want to delete {name} ID: {selection} (yes/no): ")
+            if confirm.lower() == 'yes':
+                del patient_list[selection]
+                print("Patient removed successfully!")
+                break
+            else:
+                break
+            
+        
+    elif delete_choice == delete_procedure:
+        while True:
+            if patient_display(patient_list) == False:
+                    print("Add a procedure to a patient")
+                    break
+            patient_selection = int(input("Which patient would you like to DELETE a PROCEDURE from? Select ID: "))
+            if display_procedures(patient_list, patient_selection) != False:
+                procedure_selection = int(input("Enter procedure ID you would like to delete: "))
+                procedure = patient_list[patient_selection]["Procedures:"][procedure_selection-1]
+
+                confirm = input(f"Are you sure you want to delete {procedure['Procedure: ']} ID: {procedure_selection} (yes/no): ")
+                if confirm.lower() == 'yes':
+                    del patient_list[patient_selection]["Procedures:"][procedure_selection-1]
+                    print(f"Procedure removed successfully")
+                    break
+                else:
+                    print("Deletion cancelled.")
+                    break
+            else:
+                break
 
 if __name__ == '__main__':
     main()
