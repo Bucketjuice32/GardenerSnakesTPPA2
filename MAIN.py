@@ -100,8 +100,7 @@ class Patient:
 #Procedure class holds data about procedure information
 class Procedure:
     #__init__ method initializes the attributes
-    def __init__(self, first_name='', procedure='', date='', practitioner='', charge=''):
-        self.__first_name = first_name
+    def __init__(self, procedure='', date='', practitioner='', charge=''):
         self.__procedure = procedure
         self.__date = date
         self.__practitioner = practitioner
@@ -111,7 +110,6 @@ class Procedure:
     #Creates procedure instance
     def input_procedure_info():
         return Procedure(
-        input('Enter the first name: '),
         input('Enter the procedure: '),
         input('Enter the date: '),
         input('Enter the practitioner: '),
@@ -119,8 +117,7 @@ class Procedure:
 
     #Output procedure
     def output_procedure_info(self):
-        return((f'First Name:', f'{self.get_first_name()}'),
-        (f'Procedure: ',f'{self.get_procedure()}'),
+        return((f'Procedure: ',f'{self.get_procedure()}'),
         (f'Date: ', f'{self.get_date()}'),
         (f'Practitioner: ', f'{self.get_practitioner()}'),
         (f'Charge: ', f'{self.get_charge()}'))
@@ -136,9 +133,6 @@ class Procedure:
 
     def set_charge(self, charge):
         self.__charge = charge
-        
-    def set_first_name(self, first_name):
-        self.__first_name = first_name
 
     #Accessor method returns the attributes
     def get_procedure(self):
@@ -235,9 +229,10 @@ def add_info(patient_list, patient_id):
             Output_Patient = Input_Patient.output_patient_info()
             patient_info = dict((x,y) for x, y in Output_Patient)
             patient_list[patient_id] = patient_info
+            name = patient_list[patient_id]["First Name:"]
             patient_list[patient_id]["Procedures:"] = []
             print(end='\n')
-            print(f"Patient info for  added successfully with ID: {patient_id}")
+            print(f"Patient info for {name} added successfully with ID: {patient_id}")
             patient_id += 1
             print (patient_list)
             print(end='\n')
@@ -249,9 +244,10 @@ def add_info(patient_list, patient_id):
                 Output_Patient = Input_Patient.output_patient_info()
                 patient_info = dict((x,y) for x, y in Output_Patient)
                 patient_list [patient_id] = patient_info
+                name = patient_list[patient_id]["First Name:"]
                 patient_list[patient_id]["Procedures:"] = []
                 print(end='\n')
-                print(f"Patient info for  added successfully with ID: {patient_id}")
+                print(f"Patient info for {name} added successfully with ID: {patient_id}")
                 patient_id += 1
                 print(patient_list)
                 cont = input('Do you want to add another person? (yes/no): ').lower()
