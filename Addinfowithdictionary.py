@@ -162,7 +162,8 @@ def main():
     quit_program = 5
     # Constant variable
     choice = 0
-    nested_dict = {}
+    patient_list = {}
+    patient_id = 1
 
     # Loop to end program depending on choice made
     while choice != quit_program:
@@ -173,14 +174,28 @@ def main():
             lookup_info()
         # If choice is equal to 2 it calls the add_info function
         elif choice == add_choice:
-             add_info(nested_dict)       
+            patient_id = add_info(patient_list, patient_id)
+            patient_id = patient_id       
         # If choice is equal to 3 it calls the change_info function
         elif choice == change_choice:
             change_info()
         # If choice is equal to 4 it calls the delete_info function
         elif choice == delete_choice:
             delete_info()
-            
+
+
+def patient_display(patient_dict):
+    if not patient_dict:  # checks if dictionary is empty
+        print("\nNo patients in the system.")
+        return False
+    print("\nList of Patients:")
+    print("-----------------")
+    for patient_id, patient_info in patient_dict.items():
+        print(f"ID: {patient_id} - First Name: {patient_info['First Name:']}")
+    print("-----------------")
+    
+
+
 # Defining menu function
 def menu_choices():
     lookup = 1
@@ -190,6 +205,7 @@ def menu_choices():
     print('Menu', '\n--------------------------')
     print('1. Lookup Info')
     print('2. Add Info')
+    print('5. Quit Program')
  
     
     choice = int(input('Enter your choice: '))
@@ -203,11 +219,12 @@ def menu_choices():
 
 
 # Defining add info function 
-def add_info(nested_dict):
+def add_info(patient_list, patient_id):
 
     add_choice = 0
     add_patient = 1
     add_procedure = 2
+
 
     print('1. Add Patient Info')
     print('2. Add Patient Procedure')
@@ -219,12 +236,13 @@ def add_info(nested_dict):
             Input_Patient = Patient.input_patient_info()
             Output_Patient = Input_Patient.output_patient_info()
             Dictionary = dict((x,y) for x, y in Output_Patient)
-            Patient1 = Dictionary['First Name:']
-            nested_dict['Patient'] = {Patient1: Dictionary}
+            patient_list[patient_id] = Dictionary
+            patient_list[patient_id]["Procedures:"] = []
             print(end='\n')
-            print(f"Patient info for {Patient1} added successfully")
+            print(f"Patient info for  added successfully with ID: {patient_id}")
+            patient_id += 1
+            print (patient_list)
             print(end='\n')
-            print(nested_dict)
             cont = input('Do you want to add another person? (yes/no): ').lower()
             if cont != 'yes':
                 break
@@ -232,46 +250,46 @@ def add_info(nested_dict):
                 Input_Patient = Patient.input_patient_info()
                 Output_Patient = Input_Patient.output_patient_info()
                 Dictionary = dict((x,y) for x, y in Output_Patient)
-                Patient1 = Dictionary['First Name:']
-                nested_dict['Patient'].update({Patient1: Dictionary})
+                patient_list [patient_id] = Dictionary
+                patient_list[patient_id]["Procedures:"] = []
                 print(end='\n')
-                print(f"Patient info for {Patient1} added successfully")
-                print(end='\n')
-                print(nested_dict)
+                print(f"Patient info for  added successfully with ID: {patient_id}")
+                patient_id += 1
+                print(patient_list)
                 cont = input('Do you want to add another person? (yes/no): ').lower()
                 if cont != 'yes':
                     break                
     if add_choice == add_procedure:
         while True:
+            if patient_display(patient_list) == False:
+                print (f"Add a patient.")
+                break 
+            selection = int(input("Which patient would you like to add a procedure to? Select ID: "))
             Input_Procedure = Procedure.input_procedure_info() 
             Output_Procedure = Input_Procedure.output_procedure_info() 
-            Dictionary2 = dict((x,y) for x, y in Output_Procedure) 
-            ProcedurePerson = Dictionary2['First Name:']
-            nested_dict['Procedure'] = {ProcedurePerson: Dictionary2} 
-            if ProcedurePerson in nested_dict:
-                nested_dict['Patient1']['Procedure1'] = Dictionary2
-            else:
-                print(end='\n')
-                print(f"Procedure info for {ProcedurePerson} added successfully.")
-                print(end='\n')
-            print(nested_dict)
+            Dictionary2 = dict((x,y) for x, y in Output_Procedure)
+            patient_list[selection]["Procedures:"].append(Dictionary2)
+            print (patient_list)
+            print (len(patient_list[selection]["Procedures:"]))
+            print(end='\n')
+            print(f"Procedure info for  added successfully.")
+            print(end='\n')
             cont = input('Do you want to add another procedure? (yes/no): ').lower()
             if cont != 'yes':
                 break     
             else:
-                Input_Procedure = Procedure.input_procedure_info()
-                Output_Procedure = Input_Procedure.output_procedure_info()
+                Input_Procedure = Procedure.input_procedure_info() 
+                Output_Procedure = Input_Procedure.output_procedure_info() 
                 Dictionary2 = dict((x,y) for x, y in Output_Procedure)
-                ProcedurePerson = Dictionary2['First Name:']
-                nested_dict['Procedure'].update({ProcedurePerson: Dictionary2})
+                patient_list[selection]["Procedures:"].append(Dictionary2)
+                print (patient_list)
                 print(end='\n')
-                print(f"Procedure info for {ProcedurePerson} added successfully.")
+                print(f"Procedure info for  added successfully.")
                 print(end='\n')
-                print(nested_dict)
                 cont = input('Do you want to add another procedure? (yes/no): ').lower()
                 if cont != 'yes':
                     break     
-
+    return patient_id
 
 
 if __name__ == '__main__':
