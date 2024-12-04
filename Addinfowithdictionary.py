@@ -183,7 +183,7 @@ def main():
         elif choice == delete_choice:
             delete_info()
 
-
+# Displays list of Patient by ID & First Name
 def patient_display(patient_dict):
     if not patient_dict:  # checks if dictionary is empty
         print("\nNo patients in the system.")
@@ -193,8 +193,6 @@ def patient_display(patient_dict):
     for patient_id, patient_info in patient_dict.items():
         print(f"ID: {patient_id} - First Name: {patient_info['First Name:']}")
     print("-----------------")
-    
-
 
 # Defining menu function
 def menu_choices():
@@ -235,8 +233,8 @@ def add_info(patient_list, patient_id):
         while True:
             Input_Patient = Patient.input_patient_info()
             Output_Patient = Input_Patient.output_patient_info()
-            Dictionary = dict((x,y) for x, y in Output_Patient)
-            patient_list[patient_id] = Dictionary
+            patient_info = dict((x,y) for x, y in Output_Patient)
+            patient_list[patient_id] = patient_info
             patient_list[patient_id]["Procedures:"] = []
             print(end='\n')
             print(f"Patient info for  added successfully with ID: {patient_id}")
@@ -249,8 +247,8 @@ def add_info(patient_list, patient_id):
             else:
                 Input_Patient = Patient.input_patient_info()
                 Output_Patient = Input_Patient.output_patient_info()
-                Dictionary = dict((x,y) for x, y in Output_Patient)
-                patient_list [patient_id] = Dictionary
+                patient_info = dict((x,y) for x, y in Output_Patient)
+                patient_list [patient_id] = patient_info
                 patient_list[patient_id]["Procedures:"] = []
                 print(end='\n')
                 print(f"Patient info for  added successfully with ID: {patient_id}")
@@ -267,8 +265,8 @@ def add_info(patient_list, patient_id):
             selection = int(input("Which patient would you like to add a procedure to? Select ID: "))
             Input_Procedure = Procedure.input_procedure_info() 
             Output_Procedure = Input_Procedure.output_procedure_info() 
-            Dictionary2 = dict((x,y) for x, y in Output_Procedure)
-            patient_list[selection]["Procedures:"].append(Dictionary2)
+            procedure_info = dict((x,y) for x, y in Output_Procedure)
+            patient_list[selection]["Procedures:"].append(procedure_info)
             print (patient_list)
             print (len(patient_list[selection]["Procedures:"]))
             print(end='\n')
@@ -280,8 +278,8 @@ def add_info(patient_list, patient_id):
             else:
                 Input_Procedure = Procedure.input_procedure_info() 
                 Output_Procedure = Input_Procedure.output_procedure_info() 
-                Dictionary2 = dict((x,y) for x, y in Output_Procedure)
-                patient_list[selection]["Procedures:"].append(Dictionary2)
+                procedure_info = dict((x,y) for x, y in Output_Procedure)
+                patient_list[selection]["Procedures:"].append(procedure_info)
                 print (patient_list)
                 print(end='\n')
                 print(f"Procedure info for  added successfully.")
