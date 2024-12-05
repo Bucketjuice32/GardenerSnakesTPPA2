@@ -165,7 +165,7 @@ def main():
 
         # If choice is equal to 1 it calls the lookup function
         if choice == lookup:
-            lookup_info()
+            lookup_info(patient_list)
         # If choice is equal to 2 it calls the add_info function
         elif choice == add_choice:
             patient_id = add_info(patient_list, patient_id)
@@ -350,6 +350,36 @@ def delete_info(patient_list):
                     break
             else:
                 break
+# Defining lookup function
+def lookup_info(patient_list):
+
+    lookup_choice = 0
+    lookup_patient = 1
+    lookup_procedure = 2
+
+    print('1. Lookup Patient Info')
+    print('2. Lookup Patient Procedure')
+
+    lookup_choice = int(input('Enter Choice: '))
+    if patient_display(patient_list) == False:
+        print("Add a procedure to a patient")
+
+    elif lookup_choice == lookup_patient:
+        id_name = int(input("Enter patient's ID: "))
+        if id_name in patient_list:
+            print(end='\n')
+            print(patient_list[id_name])
+            print(end='\n')
+        else:
+            print('Patient not found')
+
+    elif lookup_choice == lookup_procedure:
+        id_name = int(input("Enter patient's ID: "))
+        if id_name in patient_list:
+            print(end='\n')
+            print(patient_list[id_name]["Procedures:"])
+            print(end='\n')
+                  
 
 if __name__ == '__main__':
     main()
