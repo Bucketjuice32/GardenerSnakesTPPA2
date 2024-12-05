@@ -379,6 +379,8 @@ def lookup_info(patient_list):
             print(end='\n')
             print(patient_list[id_name]["Procedures:"])
             print(end='\n')
+        else:
+            print('Procedure not found')
                   
 
 if __name__ == '__main__':
