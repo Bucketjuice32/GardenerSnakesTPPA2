@@ -232,7 +232,7 @@ def add_info(patient_list, patient_id):
     add_patient = 1
     add_procedure = 2
     
-  try:
+    try:
         print('1. Add Patient Info')
         print('2. Add Patient Procedure')
 
@@ -309,7 +309,7 @@ def delete_info(patient_list):
     delete_patient = 1
     delete_procedure = 2
 
-   try:
+    try:
         print('1. Delete Patient Info')
         print('2. Delete Patient Procedure')
 
