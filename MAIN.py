@@ -198,7 +198,7 @@ def patient_display_info(patient_list, patient_id):
             print(f"Emergency Contact Number: {info["Emergency Contact Number: "]}")
             print("--------------------------------")
         else:
-            print(f"\nPatient ID {patient_id} has no procedures recorded.")
+            print(f"\nPatient ID {patient_id} does not exist.")
             return False
 
 
