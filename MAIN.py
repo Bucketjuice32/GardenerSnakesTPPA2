@@ -180,6 +180,28 @@ def patient_display(patient_dict):
         print(f"ID: {patient_id} - First Name: {patient_info['First Name:']}")
     print("-----------------")
 
+def patient_display_info(patient_list, patient_id):
+    if patient_id in patient_list:
+        info = patient_list[patient_id]
+        if info:
+            print(f"\nProcedure Info for Patient ID {patient_id}:")
+            print("--------------------------------")
+            print(f"First Name: {info["First Name:"]}")
+            print(f"Middle Name: {info["Middle Name:"]}")
+            print(f"Last Name: {info["Last Name: "]}")
+            print(f"Address: {info["Address: "]}")
+            print(f"City: {info["City: "]}")
+            print(f"State: {info["State: "]}")
+            print(f"Zip Code: {info["Zip Code:"]}")
+            print(f"Phone Number: {info["Phone Number:"]}")
+            print(f"Emergency Contact: {info["Emergency Contact: "]}")
+            print(f"Emergency Contact Number: {info["Emergency Contact Number: "]}")
+            print("--------------------------------")
+        else:
+            print(f"\nPatient ID {patient_id} has no procedures recorded.")
+            return False
+
+
 def display_procedures(patient_list, patient_id):
     if patient_id in patient_list:
         procedures = patient_list[patient_id]["Procedures:"]
@@ -195,6 +217,22 @@ def display_procedures(patient_list, patient_id):
     else:
         print("\nPatient ID not found.")
         return False
+
+def display_procedure_info(patient_list, patient_id):
+    if patient_id in patient_list:
+        procedures = patient_list[patient_id]["Procedures:"]
+        if procedures:
+            print(f"\nProcedure Info for Patient ID {patient_id}:")
+            print("--------------------------------")
+            for i, procedure in enumerate(procedures, 1):
+                print(f"ID: {i} - Procedure: {procedure['Procedure: ']}")
+                print(f"   Date: {procedure['Date: ']}")
+                print(f"   Practitioner: {procedure['Practitioner: ']}")
+                print(f"   Charge: ${procedure['Charge: ']}")
+            print("--------------------------------")
+        else:
+            print(f"\nPatient ID {patient_id} has no procedures recorded.")
+            return False
 
 # Defining menu function
 def menu_choices():
@@ -372,20 +410,13 @@ def lookup_info(patient_list):
     elif lookup_choice == lookup_patient:
         id_name = int(input("Enter patient's ID: "))
         if id_name in patient_list:
-            print(end='\n')
-            print(patient_list[id_name])
-            print(end='\n')
+            patient_display_info(patient_list, id_name)
         else:
             print('Patient not found')
 
     elif lookup_choice == lookup_procedure:
         id_name = int(input("Enter patient's ID: "))
-        if id_name in patient_list:
-            print(end='\n')
-            print(patient_list[id_name]["Procedures:"])
-            print(end='\n')
-        else:
-            print('Procedure not found')
+        display_procedure_info(patient_list, id_name)
                   
 
 if __name__ == '__main__':
