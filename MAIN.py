@@ -29,7 +29,7 @@ class Patient:
         input('Enter the emergency contact number: '))
 
     #Output procedure
-    def output_patient_info(self):
+    def output_patient_info(self): #outputs the input into a tuple
         return((f'First Name:', f'{self.get_first_name()}'), 
         (f'Middle Name:', f'{self.get_middle_name()}'),
         (f'Last Name: ', f'{self.get_last_name()}'),
@@ -276,22 +276,22 @@ def add_info(patient_list, patient_id):
         print("Invalid input. Please enter option (1 or 2)")
 
     if add_choice == add_patient:
-        while True:
-            Input_Patient = Patient.input_patient_info()
-            Output_Patient = Input_Patient.output_patient_info()
-            patient_info = dict((x,y) for x, y in Output_Patient)
-            patient_list[patient_id] = patient_info
-            name = patient_list[patient_id]["First Name:"]
-            patient_list[patient_id]["Procedures:"] = []
+        while True: #starts with a loop
+            Input_Patient = Patient.input_patient_info() 
+            Output_Patient = Input_Patient.output_patient_info() #inputs the patient info
+            patient_info = dict((x,y) for x, y in Output_Patient) #stores info into a dictionary
+            patient_list[patient_id] = patient_info #stores info into another dictionary, with the patient id
+            name = patient_list[patient_id]["First Name:"] #searches for first name in stored dictionary
+            patient_list[patient_id]["Procedures:"] = [] #sets the procedure to an empty list in the dictionary
             print(end='\n')
             print(f"Patient info for {name} added successfully with ID: {patient_id}")
-            patient_id += 1
+            patient_id += 1 #adds id number
             print (patient_list)
             print(end='\n')
-            cont = input('Do you want to add another person? (yes/no): ').lower()
+            cont = input('Do you want to add another person? (yes/no): ').lower() #checks if the user wants to continue
             if cont != 'yes':
                 break
-            else:
+            else: #continues to add more patients
                 Input_Patient = Patient.input_patient_info()
                 Output_Patient = Input_Patient.output_patient_info()
                 patient_info = dict((x,y) for x, y in Output_Patient)
@@ -314,29 +314,29 @@ def add_info(patient_list, patient_id):
             Input_Procedure = Procedure.input_procedure_info() 
             Output_Procedure = Input_Procedure.output_procedure_info() 
             procedure_info = dict((x,y) for x, y in Output_Procedure)
-            patient_list[selection]["Procedures:"].append(procedure_info)
+            patient_list[selection]["Procedures:"].append(procedure_info) #stores procedure in empty list
             print (patient_list)
-            print (len(patient_list[selection]["Procedures:"]))
+            print (len(patient_list[selection]["Procedures:"])) 
             print(end='\n')
-            print(f"Procedure info for  added successfully.")
+            print(f"Procedure info added successfully.")
             print(end='\n')
             cont = input('Do you want to add another procedure? (yes/no): ').lower()
             if cont != 'yes':
                 break     
-            else:
+            else: #continues to add more procedures
                 Input_Procedure = Procedure.input_procedure_info() 
                 Output_Procedure = Input_Procedure.output_procedure_info() 
                 procedure_info = dict((x,y) for x, y in Output_Procedure)
                 patient_list[selection]["Procedures:"].append(procedure_info)
                 print (patient_list)
                 print(end='\n')
-                print(f"Procedure info for  added successfully.")
+                print(f"Procedure info added successfully.")
                 print(end='\n')
                 cont = input('Do you want to add another procedure? (yes/no): ').lower()
                 if cont != 'yes':
                     break     
     return patient_id
-
+#Defining delete info function
 def delete_info(patient_list):
 
     delete_choice = 0
@@ -353,7 +353,7 @@ def delete_info(patient_list):
         print("Invalid input. Please enter option (1 or 2)")
 
     if delete_choice == delete_patient:
-        while True:
+        while True: #starts with a loop
             if patient_display(patient_list) == False:
                     print (f"Add a patient.")
                     break
@@ -362,7 +362,7 @@ def delete_info(patient_list):
             
             confirm = input(f"Are you sure you want to delete {name} ID: {selection} (yes/no): ")
             if confirm.lower() == 'yes':
-                del patient_list[selection]
+                del patient_list[selection] #removes information based on id number
                 print("Patient removed successfully!")
                 break
             else:
@@ -376,12 +376,12 @@ def delete_info(patient_list):
                     break
             patient_selection = int(input("Which patient would you like to DELETE a PROCEDURE from? Select ID: "))
             if display_procedures(patient_list, patient_selection) != False:
-                procedure_selection = int(input("Enter procedure ID you would like to delete: "))
+                procedure_selection = int(input("Enter procedure ID you would like to delete: ")) 
                 procedure = patient_list[patient_selection]["Procedures:"][procedure_selection-1]
 
                 confirm = input(f"Are you sure you want to delete {procedure['Procedure: ']} ID: {procedure_selection} (yes/no): ")
                 if confirm.lower() == 'yes':
-                    del patient_list[patient_selection]["Procedures:"][procedure_selection-1]
+                    del patient_list[patient_selection]["Procedures:"][procedure_selection-1] #deletes based on id number and procedure
                     print(f"Procedure removed successfully")
                     break
                 else:
