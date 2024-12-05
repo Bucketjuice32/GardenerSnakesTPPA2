@@ -147,9 +147,8 @@ class Procedure:
 def main():
     lookup = 1
     add_choice = 2
-    change_choice = 3
-    delete_choice = 4
-    quit_program = 5
+    delete_choice = 3
+    quit_program = 4
     # Constant variable
     choice = 0
     patient_list = {}
@@ -166,10 +165,7 @@ def main():
         elif choice == add_choice:
             patient_id = add_info(patient_list, patient_id)
             patient_id = patient_id       
-        # If choice is equal to 3 it calls the change_info function
-        elif choice == change_choice:
-            change_info()
-        # If choice is equal to 4 it calls the delete_info function
+        # If choice is equal to 3 it calls the delete_info function
         elif choice == delete_choice:
             delete_info(patient_list)
 
@@ -203,15 +199,15 @@ def display_procedures(patient_list, patient_id):
 # Defining menu function
 def menu_choices():
     lookup = 1
-    quit_program = 5
+    quit_program = 4
 
     try:
         # Display menu choices
         print('Menu', '\n--------------------------')
         print('1. Lookup Info')
         print('2. Add Info')
-        print('4. Delete Info')
-        print('5. Quit Program')
+        print('3. Delete Info')
+        print('4. Quit Program')
  
     
         choice = int(input('Enter your choice: '))
