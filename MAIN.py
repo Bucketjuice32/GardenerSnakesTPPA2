@@ -205,23 +205,25 @@ def menu_choices():
     lookup = 1
     quit_program = 5
 
-    # Display menu choices
-    print('Menu', '\n--------------------------')
-    print('1. Lookup Info')
-    print('2. Add Info')
-    print('4. Delete Info')
-    print('5. Quit Program')
+    try:
+        # Display menu choices
+        print('Menu', '\n--------------------------')
+        print('1. Lookup Info')
+        print('2. Add Info')
+        print('4. Delete Info')
+        print('5. Quit Program')
  
     
-    choice = int(input('Enter your choice: '))
+        choice = int(input('Enter your choice: '))
+    
+        # If choice isn't between paramenter error message
+        while choice < lookup or choice > quit_program:
 
-    # If choice isn't between paramenter error message
-    while choice < lookup or choice > quit_program:
+            choice = int(input('Enter a valid choice: '))
 
-        choice = int(input('Enter a valid choice: '))
-
-    return choice
-
+        return choice
+    except ValueError:
+        print("Invalid input. Please enter a valid number between 1 and 5.")
 
 # Defining add info function 
 def add_info(patient_list, patient_id):
@@ -229,12 +231,15 @@ def add_info(patient_list, patient_id):
     add_choice = 0
     add_patient = 1
     add_procedure = 2
+    
+  try:
+        print('1. Add Patient Info')
+        print('2. Add Patient Procedure')
 
-
-    print('1. Add Patient Info')
-    print('2. Add Patient Procedure')
-
-    add_choice = int(input('Enter Choice: '))
+        add_choice = int(input('Enter Choice: '))
+        
+    except ValueError:
+        print("Invalid input. Please enter option (1 or 2)")
 
     if add_choice == add_patient:
         while True:
@@ -304,10 +309,14 @@ def delete_info(patient_list):
     delete_patient = 1
     delete_procedure = 2
 
-    print('1. Delete Patient Info')
-    print('2. Delete Patient Procedure')
+   try:
+        print('1. Delete Patient Info')
+        print('2. Delete Patient Procedure')
 
-    delete_choice = int(input('Enter Choice: '))
+        delete_choice = int(input('Enter Choice: '))
+        
+    except ValueError:
+        print("Invalid input. Please enter option (1 or 2)")
 
     if delete_choice == delete_patient:
         while True:
@@ -353,10 +362,14 @@ def lookup_info(patient_list):
     lookup_patient = 1
     lookup_procedure = 2
 
-    print('1. Lookup Patient Info')
-    print('2. Lookup Patient Procedure')
+    try:
+        print('1. Lookup Patient Info')
+        print('2. Lookup Patient Procedure')
 
-    lookup_choice = int(input('Enter Choice: '))
+        lookup_choice = int(input('Enter Choice: '))
+    except ValueError:
+        print("Invalid input. Please enter option (1 or 2)")
+        
     if patient_display(patient_list) == False:
         print("Add a procedure to a patient")
 
