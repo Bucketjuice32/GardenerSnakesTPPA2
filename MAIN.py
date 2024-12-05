@@ -13,7 +13,6 @@ class Patient:
         self.__number = number
         self.__emergency_contact = emergency_contact
         self.__emergency_number = emergency_number
-        self.__procedures = []
         
     #Input procedure       
     def input_patient_info() :
@@ -94,8 +93,6 @@ class Patient:
         return self.__emergency_contact
     def get_emergency_number(self):
         return self.__emergency_number
-    def get_procedures(self):
-        return self.__procedures.items()
 
 #Procedure class holds data about procedure information
 class Procedure:
@@ -105,7 +102,6 @@ class Procedure:
         self.__date = date
         self.__practitioner = practitioner
         self.__charge = charge
-        self.__id = 1
 
     #Creates procedure instance
     def input_procedure_info():
@@ -124,7 +120,9 @@ class Procedure:
   
 
     #Mutator method accepts the arguments for each attribute
-
+    def set_procedure(self, procedure):
+        self.__procedure = procedure
+        
     def set_date(self, date):
         self.__date = date
 
@@ -145,8 +143,6 @@ class Procedure:
         return self.__charge
     def get_first_name(self):
         return self.__first_name
-    def get_id(self):
-        return self.__id
 
 def main():
     lookup = 1
